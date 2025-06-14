@@ -38,8 +38,9 @@ const Skills: React.FC = () => {
   const skills: Skill[] = [
     { name: 'React', level: 90, category: 'Frontend' },
     { name: 'TypeScript', level: 85, category: 'Frontend' },
+    { name: 'JavaScript', level: 90, category: 'Frontend' },
     { name: 'Node.js', level: 88, category: 'Backend' },
-    { name: 'Python', level: 82, category: 'Backend' },
+    { name: 'Java', level: 82, category: 'Backend' },
     { name: 'MongoDB', level: 85, category: 'Database' },
     { name: 'PostgreSQL', level: 80, category: 'Database' },
     { name: 'Git', level: 90, category: 'Tools' },
@@ -322,9 +323,9 @@ const Skills: React.FC = () => {
           className="mt-12 grid md:grid-cols-3 gap-8"
         >
           {[
-            { number: '50+', label: 'Projects Completed', color: 'text-cyan-400' },
+            { number: '20+', label: 'Projects Completed', color: 'text-cyan-400' },
             { number: '100%', label: 'Client Satisfaction', color: 'text-green-400' },
-            { number: '5+', label: 'Years Experience', color: 'text-purple-400' },
+            { number: '1.5+', label: 'Years Experience', color: 'text-purple-400' },
           ].map((stat, index) => (
             <motion.div
               key={stat.label}
