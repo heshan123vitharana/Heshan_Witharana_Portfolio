@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import emailjs from "@emailjs/browser";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -8,11 +9,25 @@ const Contact: React.FC = () => {
     email: '',
     message: ''
   });
+  const form = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    if (form.current) {
+      emailjs
+        .sendForm(
+          "service_s63lb5f",      // Your EmailJS service ID
+          "template_l48n4bi",     // Your EmailJS template ID
+          form.current,
+          "2NoHBKi_x7ITj_0VZ"       // Replace with your EmailJS public key
+        )
+        .then((result) => {
+          console.log('Email sent successfully:', result.text);
+        })
+        .catch((error) => {
+          console.error('Error sending email:', error);
+        });
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -71,8 +86,8 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-gray-400">Phone</p>
-                    <a href="tel:+1234567890" className="text-white hover:text-cyan-400 transition-colors">
-                      +1 (234) 567-890
+                    <a href="tel:+94740649658" className="text-white hover:text-cyan-400 transition-colors">
+                      +94 (740) 649-658
                     </a>
                   </div>
                 </div>
@@ -82,7 +97,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-gray-400">Location</p>
-                    <p className="text-white">Colombo, Sri Lanka</p>
+                    <p className="text-white">Diyagama, Homagama, Sri Lanka</p>
                   </div>
                 </div>
               </div>
@@ -95,7 +110,7 @@ const Contact: React.FC = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <form onSubmit={handleSubmit} className="bg-black/40 p-6 rounded-lg border border-gray-700">
+            <form ref={form} onSubmit={handleSubmit} className="bg-black/40 p-6 rounded-lg border border-gray-700">
               <div className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-gray-300 mb-2">Name</label>

@@ -117,9 +117,7 @@ const About: React.FC = () => {
                 My Journey
               </h3>
               <p className="text-gray-300 leading-relaxed mb-4">
-                My journey in tech began with a curiosity for creating digital solutions. 
-                Over the years, I've evolved into a full-stack developer with expertise in both 
-                frontend and backend technologies, always staying current with the latest industry trends.
+                I'm currently an undergraduate student with 1.5 years of hands-on experience in the IT industry. My journey in tech started with a strong curiosity to understand how digital systems work and how they can solve real-world problems. Over time, this passion led me to pursue full-stack development, where I've built expertise in both frontend and backend technologies. I continuously explore new tools, frameworks, and industry trends to stay ahead in this ever-evolving field.
               </p>
               <p className="text-gray-300 leading-relaxed">
                 I believe in continuous learning and pushing the boundaries of what's possible in web development, 
@@ -129,7 +127,7 @@ const About: React.FC = () => {
             <div className="relative">
               <div className="w-full h-64 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-lg flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-4xl font-orbitron font-bold text-white mb-2">5+</div>
+                  <div className="text-4xl font-orbitron font-bold text-white mb-2">1.5+</div>
                   <div className="text-cyan-400">Years Experience</div>
                 </div>
               </div>

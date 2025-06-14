@@ -59,9 +59,9 @@ const Footer: React.FC = () => {
             <h3 className="font-orbitron font-bold text-white text-lg mb-4">Connect</h3>
             <div className="flex space-x-4 mb-4">
               {[
-                { icon: Github, href: 'https://github.com/heshanwitharana', label: 'GitHub' },
-                { icon: Linkedin, href: 'https://linkedin.com/in/heshanwitharana', label: 'LinkedIn' },
-                { icon: Mail, href: 'mailto:heshan@example.com', label: 'Email' }
+                { icon: Github, href: 'https://github.com/heshan123vitharana', label: 'GitHub' },
+                { icon: Linkedin, href: 'https://linkedin.com/in/heshan-witharana', label: 'LinkedIn' },
+                { icon: Mail, href: 'mailto:vitharana8000@gmail.com', label: 'Email' }
               ].map((social) => (
                 <motion.a
                   key={social.label}

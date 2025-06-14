@@ -15,31 +15,31 @@ const Designs: React.FC = () => {
     {
       title: 'Mobile App UI/UX',
       category: 'UI/UX',
-      imageUrl: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
+      imageUrl: 'https://i.postimg.cc/pL4qw3ZN/image.png',
       description: 'Modern mobile application interface design with intuitive user experience'
     },
     {
       title: 'Website Redesign',
       category: 'Web Design',
-      imageUrl: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
+      imageUrl: 'https://i.postimg.cc/L8bzqfYj/project-1.png',
       description: 'Complete website redesign focusing on user engagement and conversion'
     },
     {
       title: 'Logo Collection',
       category: 'Logo Design',
-      imageUrl: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
+      imageUrl: 'https://i.postimg.cc/C5CK0yDc/LOGO-22-IT0550.jpg',
       description: 'Collection of minimalist and modern logo designs for various industries'
     },
     {
       title: 'Print Design',
       category: 'Print',
-      imageUrl: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
+      imageUrl: 'https://i.postimg.cc/tTYP9gC2/Whats-App-Image-2025-06-15-at-00-55-18-1513234b.jpg',
       description: 'Brochures, flyers, and print materials with striking visual impact'
     },
     {
       title: 'Social Media Graphics',
       category: 'Social Media',
-      imageUrl: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
+      imageUrl: 'https://i.postimg.cc/g2zxY0g8/BOYB-2.png',
       description: 'Eye-catching social media graphics and promotional materials'
     },
     {
@@ -51,7 +51,7 @@ const Designs: React.FC = () => {
     {
       title: 'Illustration Set',
       category: 'Illustration',
-      imageUrl: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
+      imageUrl: 'https://i.postimg.cc/CKWMfMsv/3.jpg',
       description: 'Custom illustrations and icon sets for digital applications'
     },
     {
