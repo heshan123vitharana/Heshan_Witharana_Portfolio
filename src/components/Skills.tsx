@@ -28,7 +28,26 @@ ChartJS.register(
   Filler
 );
 
+interface Skill {
+  name: string;
+  level: number;
+  category: 'Frontend' | 'Backend' | 'Database' | 'Tools';
+}
+
 const Skills: React.FC = () => {
+  const skills: Skill[] = [
+    { name: 'React', level: 90, category: 'Frontend' },
+    { name: 'TypeScript', level: 85, category: 'Frontend' },
+    { name: 'Node.js', level: 88, category: 'Backend' },
+    { name: 'Python', level: 82, category: 'Backend' },
+    { name: 'MongoDB', level: 85, category: 'Database' },
+    { name: 'PostgreSQL', level: 80, category: 'Database' },
+    { name: 'Git', level: 90, category: 'Tools' },
+    { name: 'Docker', level: 75, category: 'Tools' },
+  ];
+
+  const categories = ['Frontend', 'Backend', 'Database', 'Tools'];
+
   const skillsData = {
     labels: ['JavaScript', 'React', 'Node.js', 'Python', 'TypeScript', 'MongoDB', 'PostgreSQL', 'AWS'],
     datasets: [
@@ -166,8 +185,61 @@ const Skills: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-black/50">
+    <section id="skills" className="py-20 bg-gray-900">
       <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
+            <span className="gradient-text">SKILLS</span>
+          </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            My technical expertise spans across various domains, allowing me to build comprehensive solutions
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {categories.map((category) => (
+            <motion.div
+              key={category}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-black/40 p-6 rounded-lg border border-gray-700"
+            >
+              <h3 className="text-2xl font-orbitron font-bold text-white mb-6">
+                {category}
+              </h3>
+              <div className="space-y-4">
+                {skills
+                  .filter((skill) => skill.category === category)
+                  .map((skill) => (
+                    <div key={skill.name}>
+                      <div className="flex justify-between mb-2">
+                        <span className="text-gray-300">{skill.name}</span>
+                        <span className="text-cyan-400">{skill.level}%</span>
+                      </div>
+                      <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          transition={{ duration: 1, ease: "easeOut" }}
+                          viewport={{ once: true }}
+                          className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
+                        />
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
