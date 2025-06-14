@@ -1,33 +1,64 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Palette, Zap, Users } from 'lucide-react';
+import { Code, Palette, Zap, Users, Database, Cloud } from 'lucide-react';
 
 const About: React.FC = () => {
   const features = [
     {
       icon: Code,
       title: 'Full Stack Development',
-      description: 'Expert in React, Node.js, Python, and modern web technologies'
+      description: 'Expert in React, Node.js, Python, and modern web technologies with focus on clean code and best practices'
+    },
+    {
+      icon: Database,
+      title: 'Database Management',
+      description: 'Proficient in SQL, MongoDB, and Redis for efficient data storage and retrieval'
+    },
+    {
+      icon: Cloud,
+      title: 'Cloud Solutions',
+      description: 'Experience with AWS, Azure, and Google Cloud Platform for scalable applications'
     },
     {
       icon: Palette,
-      title: 'Graphic Design',
-      description: 'Creating stunning visual identities, logos, and digital artwork'
+      title: 'UI/UX Design',
+      description: 'Creating stunning visual identities, logos, and digital artwork with modern design principles'
     },
     {
       icon: Zap,
       title: 'Performance Optimization',
-      description: 'Building fast, scalable, and efficient applications'
+      description: 'Building fast, scalable, and efficient applications with modern optimization techniques'
     },
     {
       icon: Users,
       title: 'User Experience',
-      description: 'Designing intuitive interfaces that users love'
+      description: 'Designing intuitive interfaces that users love with focus on accessibility and usability'
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   return (
-    <section id="about" className="py-20 bg-gray-900/50">
+    <section id="about" className="py-20 bg-gradient-to-b from-gray-900/50 to-gray-900">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -40,20 +71,23 @@ const About: React.FC = () => {
             <span className="gradient-text">ABOUT ME</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            I'm a passionate developer and designer who loves bringing ideas to life through code and creativity. 
-            With expertise in both technical development and visual design, I create comprehensive digital solutions 
-            that not only function flawlessly but also captivate users visually.
+            I'm a passionate Full Stack Developer with a keen eye for design and a drive for creating exceptional digital experiences. 
+            With expertise in both technical development and visual design, I craft comprehensive solutions that combine 
+            technical excellence with aesthetic appeal.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              variants={itemVariants}
               className="bg-black/40 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all duration-300 holographic"
               whileHover={{ scale: 1.05 }}
             >
@@ -68,7 +102,7 @@ const About: React.FC = () => {
               </p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -83,13 +117,13 @@ const About: React.FC = () => {
                 My Journey
               </h3>
               <p className="text-gray-300 leading-relaxed mb-4">
-                Started as a curious developer exploring the endless possibilities of code. 
-                Over the years, I've evolved into a full-stack developer with a keen eye for design, 
-                constantly pushing the boundaries of what's possible in web development.
+                My journey in tech began with a curiosity for creating digital solutions. 
+                Over the years, I've evolved into a full-stack developer with expertise in both 
+                frontend and backend technologies, always staying current with the latest industry trends.
               </p>
               <p className="text-gray-300 leading-relaxed">
-                My dual expertise in development and design allows me to create cohesive, 
-                end-to-end solutions that are both technically sound and visually stunning.
+                I believe in continuous learning and pushing the boundaries of what's possible in web development, 
+                while maintaining a strong focus on user experience and performance optimization.
               </p>
             </div>
             <div className="relative">
