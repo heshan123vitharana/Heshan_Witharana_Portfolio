@@ -14,28 +14,28 @@ interface Project {
 const Projects: React.FC = () => {
   const projects: Project[] = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce platform with real-time inventory management, payment processing, and admin dashboard.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      image: '/projects/ecommerce.jpg',
-      githubUrl: 'https://github.com/heshan123vitharana/ecommerce-platform',
-      liveUrl: 'https://ecommerce-demo.com'
+      title: 'React-Professional-calculator',
+      description: 'A modern, feature-rich scientific calculator built with React, featuring a beautiful animated particle background and advanced engineering mathematics functions.',
+      technologies: ['React', 'Vite', 'CSS Models', 'Canvas API'],
+      image: 'https://i.postimg.cc/JzqzgQxL/Screenshot-2025-05-04-121129.png',
+      githubUrl: 'https://github.com/heshan123vitharana/Professional-React-Calculator-with-scientific-functions-and-animated-background.git',
+      liveUrl: 'https://heshan123vitharana.github.io/Professional-React-Calculator-with-scientific-functions-and-animated-background/'
     },
     {
-      title: 'Task Management App',
+      title: 'To Do List Application',
       description: 'A collaborative task management application with real-time updates, team features, and progress tracking.',
-      technologies: ['React', 'TypeScript', 'Firebase', 'Tailwind CSS'],
-      image: '/projects/taskmanager.jpg',
-      githubUrl: 'https://github.com/heshan123vitharana/task-manager',
-      liveUrl: 'https://task-manager-demo.com'
+      technologies: ['HTML5', 'CSS3', 'JavaScript'],
+      image: 'https://i.postimg.cc/fyt3Q0Lv/Screenshot-2025-04-29-130357.png',
+      githubUrl: 'https://github.com/heshan123vitharana/To-Do-List-App.git',
+      liveUrl: 'https://heshan123vitharana.github.io/To-Do-List-App/',
     },
     {
-      title: 'AI Chat Application',
-      description: 'An AI-powered chat application with natural language processing and real-time responses.',
-      technologies: ['Python', 'TensorFlow', 'React', 'WebSocket'],
-      image: '/projects/aichat.jpg',
-      githubUrl: 'https://github.com/heshan123vitharana/ai-chat',
-      liveUrl: 'https://ai-chat-demo.com'
+      title: 'Personal-Portfolio-Website',
+      description: 'Personal portfolio website built with HTML, CSS, JavaScript, and Node.js. It showcases my skills, projects, and experience as a software engineer. Features include a responsive design with sections for Home, Skills, Projects, About Me, and Contact.',
+      technologies: ['HTML5', 'CSS3', 'JavaScript'],
+      image: 'https://i.postimg.cc/dQ2LMdJ4/Screenshot-80.png',
+      githubUrl: 'https://github.com/heshan123vitharana/Personal-Portfolio-Website.git',
+      liveUrl: 'https://heshan123vitharana.github.io/Personal-Portfolio-Website/'
     }
   ];
 
