@@ -54,8 +54,8 @@ const Header: React.FC = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-            ? 'bg-black/90 backdrop-blur-xl border-b border-white/[0.06] shadow-2xl shadow-black/50'
-            : 'bg-transparent'
+          ? 'bg-black/90 backdrop-blur-xl border-b border-white/[0.06] shadow-2xl shadow-black/50'
+          : 'bg-transparent'
           }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
@@ -72,14 +72,9 @@ const Header: React.FC = () => {
               <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
                 <span className="font-orbitron font-black text-black text-sm">H</span>
               </div>
-              <div className="flex flex-col leading-none">
-                <span className="font-orbitron font-bold text-white text-sm tracking-wider">
-                  HESHAN
-                </span>
-                <span className="text-[10px] text-cyan-400 font-semibold tracking-[0.25em] uppercase">
-                  Developer
-                </span>
-              </div>
+              <span className="font-orbitron font-bold text-white text-[15px] tracking-wide">
+                Heshan <span className="text-cyan-400">Witharana</span>
+              </span>
             </motion.a>
 
             {/* Desktop Navigation — Centered */}
@@ -97,8 +92,8 @@ const Header: React.FC = () => {
                   >
                     <span
                       className={`block px-4 py-2 text-[13px] font-semibold uppercase tracking-wider transition-colors duration-300 ${isActive
-                          ? 'text-cyan-400'
-                          : 'text-gray-400 group-hover:text-white'
+                        ? 'text-cyan-400'
+                        : 'text-gray-400 group-hover:text-white'
                         }`}
                     >
                       {item.name}
@@ -192,8 +187,8 @@ const Header: React.FC = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.05 + index * 0.04 }}
                       className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold tracking-wide uppercase transition-all duration-200 ${isActive
-                          ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/15'
-                          : 'text-gray-500 hover:text-white hover:bg-white/[0.04]'
+                        ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/15'
+                        : 'text-gray-500 hover:text-white hover:bg-white/[0.04]'
                         }`}
                       onClick={() => setIsMenuOpen(false)}
                     >
