@@ -31,30 +31,32 @@ ChartJS.register(
 interface Skill {
   name: string;
   level: number;
-  category: 'Frontend' | 'Backend' | 'Database' | 'Tools';
+  category: 'Frontend' | 'Backend' | 'Database' | 'Languages';
 }
 
 const Skills: React.FC = () => {
   const skills: Skill[] = [
     { name: 'React', level: 90, category: 'Frontend' },
-    { name: 'TypeScript', level: 85, category: 'Frontend' },
+    { name: 'HTML5/CSS3', level: 92, category: 'Frontend' },
     { name: 'JavaScript', level: 90, category: 'Frontend' },
     { name: 'Node.js', level: 88, category: 'Backend' },
-    { name: 'Java', level: 82, category: 'Backend' },
+    { name: 'Express.js', level: 85, category: 'Backend' },
+    { name: 'Spring Boot', level: 78, category: 'Backend' },
     { name: 'MongoDB', level: 85, category: 'Database' },
-    { name: 'PostgreSQL', level: 80, category: 'Database' },
-    { name: 'Git', level: 90, category: 'Tools' },
-    { name: 'Docker', level: 75, category: 'Tools' },
+    { name: 'MySQL', level: 82, category: 'Database' },
+    { name: 'Java', level: 82, category: 'Languages' },
+    { name: 'Python', level: 78, category: 'Languages' },
+    { name: 'PHP', level: 72, category: 'Languages' },
   ];
 
-  const categories = ['Frontend', 'Backend', 'Database', 'Tools'];
+  const categories = ['Frontend', 'Backend', 'Database', 'Languages'];
 
   const skillsData = {
-    labels: ['JavaScript', 'React', 'Node.js', 'Python', 'TypeScript', 'MongoDB', 'PostgreSQL', 'AWS'],
+    labels: ['React', 'Node.js', 'Express.js', 'Spring Boot', 'JavaScript', 'Java', 'Python', 'MySQL'],
     datasets: [
       {
         label: 'Proficiency Level',
-        data: [95, 90, 85, 80, 88, 75, 82, 78],
+        data: [90, 88, 85, 78, 90, 82, 78, 82],
         backgroundColor: [
           'rgba(0, 255, 255, 0.6)',
           'rgba(255, 0, 255, 0.6)',
@@ -81,11 +83,11 @@ const Skills: React.FC = () => {
   };
 
   const designSkillsData = {
-    labels: ['UI/UX Design', 'Graphic Design', 'Branding', 'Typography', 'Color Theory', 'Layout Design'],
+    labels: ['UI/UX Design', 'Graphic Design', 'Branding', 'Digital Marketing', 'Vector Art', 'Figma'],
     datasets: [
       {
         label: 'Design Skills',
-        data: [92, 88, 85, 90, 87, 89],
+        data: [92, 90, 87, 88, 85, 93],
         backgroundColor: 'rgba(0, 255, 255, 0.2)',
         borderColor: 'rgba(0, 255, 255, 1)',
         borderWidth: 2,
@@ -174,15 +176,43 @@ const Skills: React.FC = () => {
     },
   };
 
+  // Creative & Technical Stack table data
+  const stackDomains = [
+    {
+      domain: 'Design & Branding',
+      tools: 'Figma, Adobe XD, Photoshop, Vector Art, Digital Marketing Strategy',
+      color: 'from-pink-500/20 to-purple-500/20',
+      borderColor: 'border-pink-500/30 hover:border-pink-500',
+    },
+    {
+      domain: 'Development',
+      tools: 'React, Node.js, Express.js, Spring Boot, MySQL, MongoDB',
+      color: 'from-cyan-500/20 to-blue-500/20',
+      borderColor: 'border-cyan-500/30 hover:border-cyan-500',
+    },
+    {
+      domain: 'Management',
+      tools: 'Agile (Scrum), ClickUp, Jira, SDLC, Stakeholder Communication',
+      color: 'from-green-500/20 to-emerald-500/20',
+      borderColor: 'border-green-500/30 hover:border-green-500',
+    },
+    {
+      domain: 'Languages',
+      tools: 'Java, JavaScript, Python, PHP, HTML5/CSS3',
+      color: 'from-orange-500/20 to-yellow-500/20',
+      borderColor: 'border-orange-500/30 hover:border-orange-500',
+    },
+  ];
+
   const tools = [
-    'Visual Studio Code',
     'Figma',
-    'Adobe Creative Suite',
+    'Adobe XD',
+    'Photoshop',
     'Git & GitHub',
-    'Docker',
+    'ClickUp',
+    'Jira',
     'Postman',
-    'Notion',
-    'Slack'
+    'VS Code'
   ];
 
   return (
@@ -196,14 +226,43 @@ const Skills: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
-            <span className="gradient-text">SKILLS</span>
+            <span className="gradient-text">CREATIVE & TECHNICAL STACK</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            My technical expertise spans across various domains, allowing me to build comprehensive solutions
+            A multi-disciplinary toolkit spanning design, development, and project management
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Stack Domain Cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 gap-6 mb-16"
+        >
+          {stackDomains.map((item, index) => (
+            <motion.div
+              key={item.domain}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className={`bg-gradient-to-br ${item.color} p-6 rounded-lg border ${item.borderColor} transition-all duration-300`}
+              whileHover={{ scale: 1.02 }}
+            >
+              <h3 className="text-lg font-orbitron font-bold text-white mb-3">
+                {item.domain}
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                {item.tools}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Skill Progress Bars */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
           {categories.map((category) => (
             <motion.div
               key={category}
@@ -325,7 +384,7 @@ const Skills: React.FC = () => {
           {[
             { number: '20+', label: 'Projects Completed', color: 'text-cyan-400' },
             { number: '100%', label: 'Client Satisfaction', color: 'text-green-400' },
-            { number: '1.5+', label: 'Years Experience', color: 'text-purple-400' },
+            { number: '3+', label: 'Years Experience', color: 'text-purple-400' },
           ].map((stat, index) => (
             <motion.div
               key={stat.label}

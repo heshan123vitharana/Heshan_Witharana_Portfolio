@@ -24,8 +24,8 @@ const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-gray-300 leading-relaxed">
-              Full Stack Developer & Graphic Designer creating innovative digital solutions
-              with modern technologies and creative design.
+              Full-Stack Engineer & Graphic Designer bridging robust code and stunning visual identities.
+              Currently leading technical lifecycles at Rapidventure Business Solutions.
             </p>
           </motion.div>
 
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
           >
             <h3 className="font-orbitron font-bold text-white text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              {['Home', 'About', 'Projects', 'Designs', 'Skills', 'Contact'].map((link) => (
+              {['Home', 'About', 'Projects', 'Designs', 'Skills', 'Achievements', 'Contact'].map((link) => (
                 <li key={link}>
                   <a
                     href={`#${link.toLowerCase()}`}
@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
           >
             Made with <Heart className="text-red-500 w-4 h-4 mx-1" /> by Heshan Witharana
             <span className="mx-2">•</span>
-            © 2024 All rights reserved
+            © 2025 All rights reserved
           </motion.p>
 
           <motion.button

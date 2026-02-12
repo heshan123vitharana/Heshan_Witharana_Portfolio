@@ -11,11 +11,12 @@ const Header: React.FC = () => {
     { name: 'Projects', href: '#projects' },
     { name: 'Designs', href: '#designs' },
     { name: 'Skills', href: '#skills' },
+    { name: 'Achievements', href: '#achievements' },
     { name: 'Contact', href: '#contact' },
   ];
 
   return (
-    <motion.header 
+    <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8 }}
@@ -23,7 +24,7 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <motion.div 
+          <motion.div
             className="flex items-center space-x-2"
             whileHover={{ scale: 1.05 }}
           >
@@ -63,7 +64,7 @@ const Header: React.FC = () => {
         </div>
 
         {isMenuOpen && (
-          <motion.nav 
+          <motion.nav
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}

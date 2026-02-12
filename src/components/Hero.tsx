@@ -32,11 +32,11 @@ const Hero: React.FC = () => {
             className="mb-8"
           >
             <p className="text-xl md:text-2xl text-cyan-400 font-medium mb-4">
-              Full Stack Developer & Graphic Designer
+              Full-Stack Engineer • Technical Project Manager • Graphic Designer
             </p>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
-              Crafting digital experiences with cutting-edge technology and creative design. 
-              Specialized in modern web applications and stunning visual identities.
+              Bridging the gap between robust code and stunning visual identities.
+              Currently leading technical lifecycles at <span className="text-cyan-400 font-semibold">Rapidventure Business Solutions</span>.
             </p>
           </motion.div>
 
