@@ -4,252 +4,230 @@ import { ChevronDown, Github, Linkedin, Mail, ArrowRight, Download } from 'lucid
 
 const Hero: React.FC = () => {
   return (
-    <section id="home" className="min-h-screen relative overflow-hidden flex items-center">
-      {/* === Background === */}
-      <div className="absolute inset-0 bg-[#050508]"></div>
+    <section id="home" className="min-h-screen relative overflow-hidden flex items-center justify-center">
+      {/* ═══ Background ═══ */}
+      <div className="absolute inset-0 bg-[#050508]" />
 
-      {/* Gradient mesh background */}
+      {/* Ambient lights */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-cyan-500/[0.03] rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-purple-600/[0.04] rounded-full blur-[100px]"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-blue-500/[0.02] rounded-full blur-[150px]"></div>
+        <motion.div
+          className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-cyan-500/[0.04] rounded-full blur-[150px]"
+          animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <div className="absolute bottom-0 left-[20%] w-[500px] h-[500px] bg-purple-600/[0.035] rounded-full blur-[120px]" />
+        <div className="absolute bottom-[20%] right-[15%] w-[400px] h-[400px] bg-blue-500/[0.025] rounded-full blur-[100px]" />
       </div>
 
       {/* Subtle grid */}
-      <div className="absolute inset-0 cyber-grid opacity-[0.04]"></div>
+      <div className="absolute inset-0 cyber-grid opacity-[0.03]" />
 
       {/* Floating particles */}
-      <div className="hero-particle" style={{ top: '12%', left: '8%' }}></div>
-      <div className="hero-particle" style={{ top: '65%', left: '4%' }}></div>
-      <div className="hero-particle" style={{ top: '25%', left: '48%' }}></div>
-      <div className="hero-particle" style={{ top: '80%', left: '30%' }}></div>
-      <div className="hero-particle" style={{ top: '18%', right: '12%', background: '#7c3aed' }}></div>
-      <div className="hero-particle" style={{ top: '55%', right: '8%', background: '#a855f7' }}></div>
-      <div className="hero-particle" style={{ top: '40%', right: '25%', background: '#06b6d4' }}></div>
+      {[
+        { top: '8%', left: '5%' },
+        { top: '72%', left: '3%' },
+        { top: '15%', left: '85%', background: '#7c3aed' },
+        { top: '60%', right: '6%', background: '#a855f7' },
+        { top: '30%', left: '92%', background: '#06b6d4' },
+        { top: '85%', left: '45%' },
+        { top: '45%', left: '2%', background: '#06b6d4' },
+      ].map((p, i) => (
+        <div key={i} className="hero-particle" style={p} />
+      ))}
 
-      {/* === Main Content === */}
-      <div className="max-w-7xl w-full mx-auto px-6 lg:px-10 relative z-10 pt-24 pb-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-6 items-center">
+      {/* ═══ Main Content — Centered Column ═══ */}
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 pt-20 pb-20 flex flex-col items-center">
 
-          {/* ── Left: Text ── */}
+        {/* ── Greeting (above photo) ── */}
+        <motion.div
+          initial={{ opacity: 0, y: -15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="flex items-center gap-3 mb-3"
+        >
+          <div className="h-px w-8 bg-gradient-to-r from-transparent to-cyan-400" />
+          <span className="text-cyan-400 text-xs font-bold uppercase tracking-[0.25em]">
+            Hello, I'm
+          </span>
+          <div className="h-px w-8 bg-gradient-to-l from-transparent to-cyan-400" />
+        </motion.div>
+
+        {/* ── Name (behind photo for 3D effect) ── */}
+        <motion.h1
+          className="font-orbitron font-bold text-center relative z-[1] whitespace-nowrap"
+          initial={{ opacity: 0, y: 30, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="text-4xl md:text-6xl lg:text-7xl gradient-text inline-block hero-name-glow">
+            HESHAN
+          </span>
+          <span className="text-4xl md:text-6xl lg:text-7xl text-white inline-block ml-3 md:ml-5 hero-name-glow-white">
+            WITHARANA
+          </span>
+        </motion.h1>
+
+        {/* ── Photo (overlaps text for 3D depth) ── */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.6, y: 50 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="relative z-[2] -mt-10 md:-mt-14 lg:-mt-20 mb-6"
+        >
+          {/* Pulsing glow behind */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="order-2 lg:order-1"
+            className="absolute inset-0"
+            style={{
+              margin: '-40px',
+              background: 'radial-gradient(circle, rgba(6,182,212,0.1) 0%, rgba(139,92,246,0.05) 40%, transparent 70%)',
+            }}
+            animate={{ scale: [1, 1.08, 1], opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+          />
+
+          {/* Photo — larger, overlapping the text above */}
+          <img
+            src="/Heshan_png.png"
+            alt="Heshan Witharana"
+            className="relative w-[380px] h-[380px] md:w-[480px] md:h-[480px] lg:w-[560px] lg:h-[560px] object-contain drop-shadow-[0_0_60px_rgba(6,182,212,0.12)]"
+          />
+
+          {/* Floating badge — 3+ Years */}
+          <motion.div
+            className="absolute -bottom-3 -left-10 md:-left-14 bg-[#0b0b12]/95 backdrop-blur-xl border border-cyan-400/[0.1] rounded-xl px-3.5 py-2 shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1, duration: 0.6 }}
           >
-            {/* Greeting */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="flex items-center gap-3 mb-6"
-            >
-              <div className="h-px w-10 bg-gradient-to-r from-cyan-400 to-transparent"></div>
-              <span className="text-cyan-400 text-sm font-semibold uppercase tracking-[0.2em]">
-                Hello, I'm
-              </span>
-            </motion.div>
-
-            {/* Name */}
-            <motion.h1
-              className="font-orbitron font-bold leading-[1.05] mb-6"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.35 }}
-            >
-              <span className="block text-5xl md:text-6xl xl:text-7xl gradient-text pb-2">
-                HESHAN
-              </span>
-              <span className="block text-5xl md:text-6xl xl:text-7xl text-white">
-                WITHARANA
-              </span>
-            </motion.h1>
-
-            {/* Role tags */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.55 }}
-              className="flex flex-wrap gap-2 mb-7"
-            >
-              {['Full-Stack Engineer', 'Project Manager', 'Graphic Designer'].map((role, i) => (
-                <motion.span
-                  key={role}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6 + i * 0.1 }}
-                  className="px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-400/[0.08] border border-cyan-400/[0.12] rounded-full"
-                >
-                  {role}
-                </motion.span>
-              ))}
-            </motion.div>
-
-            {/* Description with accent border */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.75 }}
-              className="hero-accent-border pl-5 mb-9 max-w-lg"
-            >
-              <p className="text-gray-400 text-[15px] leading-relaxed">
-                Bridging the gap between robust code and stunning visual identities.
-                Currently leading technical lifecycles at{' '}
-                <span className="text-cyan-400 font-semibold">Rapidventure Business Solutions</span>.
-              </p>
-            </motion.div>
-
-            {/* CTA buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
-              className="flex flex-wrap gap-3 mb-10"
-            >
-              <motion.a
-                href="#contact"
-                className="group inline-flex items-center gap-2 px-7 py-3 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black font-bold text-[13px] uppercase tracking-wider rounded-lg shadow-lg shadow-cyan-500/20 transition-all duration-300"
-                whileHover={{ scale: 1.04, boxShadow: '0 8px 40px rgba(0, 255, 255, 0.3)' }}
-                whileTap={{ scale: 0.96 }}
-              >
-                Hire Me
-                <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-200" />
-              </motion.a>
-              <motion.a
-                href="/Heshan_Witharana_PM & Full Stack Developer_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-7 py-3 border border-white/[0.12] text-white font-semibold text-[13px] uppercase tracking-wider rounded-lg hover:border-cyan-400/30 hover:bg-cyan-400/[0.04] transition-all duration-300"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-              >
-                <Download size={14} />
-                Resume
-              </motion.a>
-            </motion.div>
-
-            {/* Social links */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.1 }}
-              className="flex items-center gap-4"
-            >
-              <span className="text-gray-600 text-[11px] font-semibold uppercase tracking-[0.2em]">
-                Connect
-              </span>
-              <div className="w-5 h-px bg-gray-700"></div>
-              {[
-                { icon: Github, href: 'https://github.com/heshan123vitharana', label: 'GitHub' },
-                { icon: Linkedin, href: 'https://linkedin.com/in/heshan-witharana', label: 'LinkedIn' },
-                { icon: Mail, href: 'mailto:vitharana8000@gmail.com', label: 'Email' },
-              ].map((social, index) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target={social.label !== 'Email' ? '_blank' : undefined}
-                  rel={social.label !== 'Email' ? 'noopener noreferrer' : undefined}
-                  className="w-9 h-9 rounded-lg bg-white/[0.03] border border-white/[0.07] flex items-center justify-center text-gray-500 hover:text-cyan-400 hover:border-cyan-400/20 hover:bg-cyan-400/[0.06] transition-all duration-300"
-                  whileHover={{ scale: 1.15, y: -3 }}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.15 + index * 0.08 }}
-                >
-                  <social.icon size={16} />
-                </motion.a>
-              ))}
+            <motion.div animate={{ y: [0, -4, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}>
+              <div className="text-lg font-orbitron font-bold text-cyan-400">3+</div>
+              <div className="text-[8px] text-gray-500 font-bold uppercase tracking-[0.12em]">Years Exp.</div>
             </motion.div>
           </motion.div>
 
-          {/* ── Right: Photo ── */}
+          {/* Floating badge — PM Lead */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="order-1 lg:order-2 flex justify-center"
+            className="absolute -top-2 -right-12 md:-right-16 bg-[#0b0b12]/95 backdrop-blur-xl border border-purple-400/[0.1] rounded-xl px-3.5 py-2 shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
           >
-            <div className="relative">
-              {/* Outer glow ring */}
-              <motion.div
-                className="absolute -inset-8 rounded-full"
-                style={{
-                  background: 'radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%)',
-                }}
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              />
-
-              {/* Spinning decorative border */}
-              <motion.div
-                className="absolute -inset-3 rounded-full"
-                style={{
-                  background: 'conic-gradient(from 0deg, transparent, rgba(6, 182, 212, 0.15), transparent, rgba(139, 92, 246, 0.1), transparent)',
-                }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
-              />
-
-              {/* Photo container — circular */}
-              <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-[370px] lg:h-[370px] rounded-full overflow-hidden border-2 border-white/[0.08] shadow-2xl shadow-black/50">
-                <img
-                  src="/Heshan_png.png"
-                  alt="Heshan Witharana"
-                  className="w-full h-full object-cover object-top scale-110"
-                />
-                {/* Bottom gradient fade */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050508]/70 via-transparent to-transparent"></div>
-              </div>
-
-              {/* Floating badge — Years */}
-              <motion.div
-                className="absolute -bottom-2 left-2 bg-[#0a0a0f]/90 backdrop-blur-xl border border-cyan-400/[0.12] rounded-xl px-4 py-2.5 shadow-2xl"
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <div className="text-xl font-orbitron font-bold text-cyan-400">3+</div>
-                <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Years Exp.</div>
-              </motion.div>
-
-              {/* Floating badge — Role */}
-              <motion.div
-                className="absolute -top-1 right-0 bg-[#0a0a0f]/90 backdrop-blur-xl border border-purple-400/[0.12] rounded-xl px-4 py-2.5 shadow-2xl"
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-              >
-                <div className="text-[10px] text-purple-400 font-bold uppercase tracking-wider">PM Lead</div>
-                <div className="text-[10px] text-gray-600 font-medium">Rapidventure</div>
-              </motion.div>
-
-              {/* Decorative dot cluster */}
-              <div className="absolute -right-6 top-1/2 -translate-y-1/2 grid grid-cols-3 gap-1.5">
-                {[...Array(9)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="w-1.5 h-1.5 rounded-full bg-cyan-400/20"
-                    animate={{ opacity: [0.2, 0.6, 0.2] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: i * 0.15 }}
-                  />
-                ))}
-              </div>
-            </div>
+            <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}>
+              <div className="text-[9px] text-purple-400 font-bold uppercase tracking-wider">PM Lead</div>
+              <div className="text-[8px] text-gray-600 font-medium">Rapidventure</div>
+            </motion.div>
           </motion.div>
-        </div>
+        </motion.div>
+
+        {/* ── Role pills ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.65 }}
+          className="flex flex-wrap justify-center gap-2 mb-7"
+        >
+          {['Full-Stack Engineer', 'Project Manager', 'Graphic Designer'].map((role, i) => (
+            <motion.span
+              key={role}
+              initial={{ opacity: 0, scale: 0.7 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.75 + i * 0.1, type: 'spring', stiffness: 300, damping: 20 }}
+              className="px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-cyan-300 bg-cyan-400/[0.06] border border-cyan-400/[0.1] rounded-full backdrop-blur-sm"
+            >
+              {role}
+            </motion.span>
+          ))}
+        </motion.div>
+
+        {/* ── Description ── */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.85 }}
+          className="text-gray-400 text-sm md:text-[15px] leading-relaxed text-center max-w-lg mb-9"
+        >
+          Bridging the gap between robust code and stunning visual identities.
+          Currently leading technical lifecycles at{' '}
+          <span className="text-cyan-400 font-semibold">Rapidventure Business Solutions</span>.
+        </motion.p>
+
+        {/* ── CTA Buttons ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
+          className="flex flex-wrap justify-center gap-3 mb-10"
+        >
+          <motion.a
+            href="#contact"
+            className="group relative inline-flex items-center gap-2 px-8 py-3 overflow-hidden bg-gradient-to-r from-cyan-400 to-cyan-500 text-black font-bold text-[12px] uppercase tracking-[0.15em] rounded-lg shadow-lg shadow-cyan-500/20"
+            whileHover={{ scale: 1.05, boxShadow: '0 8px 40px rgba(6,182,212,0.35)' }}
+            whileTap={{ scale: 0.96 }}
+          >
+            {/* Shine sweep */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12"
+              initial={{ x: '-200%' }}
+              whileHover={{ x: '200%' }}
+              transition={{ duration: 0.5 }}
+            />
+            <span className="relative">Hire Me</span>
+            <ArrowRight size={14} className="relative group-hover:translate-x-1 transition-transform duration-200" />
+          </motion.a>
+          <motion.a
+            href="/Heshan_Witharana_PM & Full Stack Developer_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-3 border border-white/[0.1] text-gray-300 font-semibold text-[12px] uppercase tracking-[0.15em] rounded-lg hover:border-cyan-400/25 hover:text-white hover:bg-white/[0.03] transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.96 }}
+          >
+            <Download size={13} />
+            Resume
+          </motion.a>
+        </motion.div>
+
+        {/* ── Social row ── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          className="flex items-center gap-3"
+        >
+          <div className="w-10 h-px bg-gradient-to-r from-transparent to-gray-700" />
+          {[
+            { icon: Github, href: 'https://github.com/heshan123vitharana', label: 'GitHub' },
+            { icon: Linkedin, href: 'https://linkedin.com/in/heshan-witharana', label: 'LinkedIn' },
+            { icon: Mail, href: 'mailto:vitharana8000@gmail.com', label: 'Email' },
+          ].map((s, i) => (
+            <motion.a
+              key={s.label}
+              href={s.href}
+              target={s.label !== 'Email' ? '_blank' : undefined}
+              rel={s.label !== 'Email' ? 'noopener noreferrer' : undefined}
+              className="w-10 h-10 rounded-full bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-gray-500 hover:text-cyan-400 hover:border-cyan-400/20 hover:bg-cyan-400/[0.06] hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] transition-all duration-300"
+              whileHover={{ scale: 1.2, y: -3 }}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.3 + i * 0.1, type: 'spring', stiffness: 260, damping: 20 }}
+            >
+              <s.icon size={16} />
+            </motion.a>
+          ))}
+          <div className="w-10 h-px bg-gradient-to-l from-transparent to-gray-700" />
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
+        transition={{ delay: 1.8 }}
       >
-        <span className="text-gray-600 text-[10px] uppercase tracking-[0.2em]">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity }}
-        >
-          <ChevronDown className="text-cyan-400/40 w-5 h-5" />
+        <span className="text-gray-600 text-[9px] uppercase tracking-[0.25em] font-semibold">Scroll</span>
+        <motion.div animate={{ y: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
+          <ChevronDown className="text-cyan-400/30 w-4 h-4" />
         </motion.div>
       </motion.div>
     </section>
