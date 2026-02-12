@@ -117,7 +117,9 @@ const Hero: React.FC = () => {
                 <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-200" />
               </motion.a>
               <motion.a
-                href="#projects"
+                href="/Heshan_Witharana_PM & Full Stack Developer_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-7 py-3 border border-white/[0.12] text-white font-semibold text-[13px] uppercase tracking-wider rounded-lg hover:border-cyan-400/30 hover:bg-cyan-400/[0.04] transition-all duration-300"
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
