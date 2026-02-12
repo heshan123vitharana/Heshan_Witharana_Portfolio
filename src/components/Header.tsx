@@ -59,23 +59,7 @@ const Header: React.FC = () => {
           }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="flex items-center justify-between h-[72px]">
-
-            {/* Logo */}
-            <motion.a
-              href="#home"
-              className="flex items-center gap-3 group"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {/* Logo mark */}
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
-                <span className="font-orbitron font-black text-black text-sm">H</span>
-              </div>
-              <span className="font-orbitron font-bold text-white text-[15px] tracking-wide">
-                Heshan <span className="text-cyan-400">Witharana</span>
-              </span>
-            </motion.a>
+          <div className="flex items-center justify-center h-[64px] relative">
 
             {/* Desktop Navigation — Centered */}
             <nav className="hidden lg:flex items-center gap-1">
@@ -118,28 +102,14 @@ const Header: React.FC = () => {
               })}
             </nav>
 
-            {/* Right side — CTA + Hamburger */}
-            <div className="flex items-center gap-4">
-              <motion.a
-                href="#contact"
-                className="hidden lg:block px-6 py-2.5 text-[13px] font-bold uppercase tracking-wider text-black bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-lg hover:from-cyan-300 hover:to-cyan-400 transition-all duration-300 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.7 }}
-                whileHover={{ scale: 1.04, y: -1 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                Let's Talk
-              </motion.a>
-
-              <motion.button
-                className="lg:hidden relative w-11 h-11 flex items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white hover:bg-white/10 transition-colors"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                whileTap={{ scale: 0.9 }}
-              >
-                {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-              </motion.button>
-            </div>
+            {/* Mobile hamburger */}
+            <motion.button
+              className="lg:hidden absolute right-0 w-11 h-11 flex items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white hover:bg-white/10 transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              whileTap={{ scale: 0.9 }}
+            >
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </motion.button>
           </div>
         </div>
       </motion.header>
