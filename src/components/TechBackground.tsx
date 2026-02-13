@@ -152,7 +152,7 @@ const TechBackground: React.FC = () => {
                         stroke="url(#grad1)"
                         strokeWidth="1"
                         animate={{ x: [-1000, 1000] }}
-                        transition={{ duration: 12, repeat: Infinity, ease: "linear", delay: 2 }}
+                        transition={{ duration: 12, repeat: Infinity, ease: "linear", delay: 1 }}
                         opacity="0.1"
                     />
 
@@ -187,6 +187,22 @@ const TechBackground: React.FC = () => {
                     />
                 </svg>
 
+                {/* ─── Random Code Streams with Overlay ─── */}
+                <div className="absolute inset-0 pointer-events-none opacity-80 overflow-hidden">
+                    {[...Array(20)].map((_, i) => (
+                        <CodeStream key={i} index={i} />
+                    ))}
+                </div>
+
+                {/* ─── Scanline Overlay for Code ─── */}
+                <div
+                    className="absolute inset-0 pointer-events-none opacity-10"
+                    style={{
+                        backgroundImage: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))',
+                        backgroundSize: '100% 4px, 6px 100%',
+                    }}
+                />
+
                 {/* Hexagon Pattern Overlay */}
                 <div
                     className="absolute inset-0 opacity-[0.02] pointer-events-none"
@@ -194,10 +210,55 @@ const TechBackground: React.FC = () => {
                         backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
                     }}
                 />
+
             </motion.div>
         </div>
     );
 };
 
-export default TechBackground;
+// ─── Sub-component for individual Code Streams ───
+// ─── Sub-component for individual Code Streams ───
+const CodeStream: React.FC<{ index: number }> = () => {
+    // Random properties for each stream
+    const left = `${Math.random() * 100}%`;
+    const duration = Math.random() * 10 + 10;
+    const delay = Math.random() * 5;
+    const opacity = Math.random() * 0.5 + 0.3;
+    const fontSize = Math.random() * 10 + 10;
 
+    // Generate random code-like strings
+    const codeSnippet = React.useMemo(() => {
+        const snippets = [
+            "0 1 0 1 1 0", "const void = null;", "if(sys.active)", "x86_64", "0xFF00AC",
+            "return true;", "import { motion }", "npm install", "git push", "404 not found",
+            "sudo apt-get", "while(1)", "console.log()", "Error: 0x001"
+        ];
+        return snippets[Math.floor(Math.random() * snippets.length)];
+    }, []);
+
+    return (
+        <motion.div
+            className="absolute top-0 text-cyan-500 font-mono whitespace-nowrap"
+            style={{
+                left,
+                fontSize: `${fontSize}px`,
+                textShadow: '0 0 5px rgba(6,182,212,0.8)',
+                writingMode: 'vertical-rl' // Make text vertical for "Matrix" feel or remove for horizontal
+            }}
+            initial={{ y: -200, opacity: 0 }}
+            animate={{
+                y: ['0vh', '120vh'],
+                opacity: [0, opacity, 0]
+            }}
+            transition={{
+                duration,
+                repeat: Infinity,
+                ease: "linear",
+                delay
+            }}
+        >
+            {codeSnippet}
+        </motion.div>
+    );
+};
+export default TechBackground;

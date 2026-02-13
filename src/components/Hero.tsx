@@ -72,17 +72,34 @@ const Hero: React.FC = () => {
       {/* Subtle grid */}
       <div className="absolute inset-0 cyber-grid opacity-[0.03] pointer-events-none" />
 
-      {/* Floating particles */}
-      {[
-        { top: '8%', left: '5%' },
-        { top: '72%', left: '3%' },
-        { top: '15%', left: '85%', background: '#7c3aed' },
-        { top: '60%', right: '6%', background: '#a855f7' },
-        { top: '30%', left: '92%', background: '#06b6d4' },
-        { top: '85%', left: '45%' },
-        { top: '45%', left: '2%', background: '#06b6d4' },
-      ].map((p, i) => (
-        <div key={i} className="hero-particle" style={p} />
+      {/* Floating particles - Random Motion */}
+      {[...Array(15)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full bg-cyan-500/40 blur-[1px]"
+          initial={{
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            scale: Math.random() * 0.5 + 0.5,
+            opacity: Math.random() * 0.5 + 0.2,
+          }}
+          animate={{
+            y: [0, Math.random() * -100 - 50, 0], // Move up and back
+            x: [0, Math.random() * 50 - 25, 0],   // Slight horizontal drift
+            opacity: [0.2, 0.8, 0.2],
+          }}
+          transition={{
+            duration: Math.random() * 10 + 10, // Slow, varying duration
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: Math.random() * 5,
+          }}
+          style={{
+            width: Math.random() * 4 + 2 + 'px',
+            height: Math.random() * 4 + 2 + 'px',
+            background: i % 3 === 0 ? '#7c3aed' : i % 3 === 1 ? '#06b6d4' : '#ffffff', // Purple, Cyan, White mixed
+          }}
+        />
       ))}
 
 
