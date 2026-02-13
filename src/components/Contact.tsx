@@ -39,7 +39,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-black">
+    <section id="contact" className="py-20 bg-black snap-start snap-always min-h-screen flex items-center">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

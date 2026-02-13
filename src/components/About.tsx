@@ -38,7 +38,7 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-gray-900/50 to-gray-900">
+    <section id="about" className="py-20 bg-gradient-to-b from-gray-900/50 to-gray-900 snap-start snap-always min-h-screen flex items-center">
       <div className="container mx-auto px-4">
         <motion.div
           variants={fadeInUp}

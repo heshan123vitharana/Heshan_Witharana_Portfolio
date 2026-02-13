@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
   const lastName = displayedText.length > spaceIndex ? displayedText.slice(spaceIndex) : '';
 
   return (
-    <section id="home" className="min-h-screen relative overflow-hidden flex items-center justify-center lg:items-end">
+    <section id="home" className="min-h-screen relative overflow-hidden flex items-center justify-center lg:items-end snap-start">
       {/* ═══ Background ═══ */}
       <div className="absolute inset-0 bg-[#050508]" />
 

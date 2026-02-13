@@ -49,7 +49,7 @@ const Achievements: React.FC = () => {
     ];
 
     return (
-        <section id="achievements" className="py-20 bg-gradient-to-b from-black to-gray-900/50">
+        <section id="achievements" className="py-20 bg-gradient-to-b from-black to-gray-900/50 snap-start snap-always min-h-screen flex items-center">
             <div className="container mx-auto px-4">
                 <motion.div
                     variants={fadeInUp}

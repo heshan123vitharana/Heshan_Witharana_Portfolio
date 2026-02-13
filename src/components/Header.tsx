@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Download, ArrowRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header: React.FC = () => {
@@ -15,6 +15,39 @@ const Header: React.FC = () => {
     { name: 'Skills', href: '#skills' },
     { name: 'Achievements', href: '#achievements' },
   ];
+
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (isTransitioning) return;
+
+    setIsTransitioning(true);
+
+    // Wait for the "curtain" to close before scrolling
+    setTimeout(() => {
+      const targetId = href.replace('#', '');
+      const element = document.getElementById(targetId);
+      if (element) {
+        // Offset for fixed header
+        const headerOffset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'instant' // Instant jump behind the curtain
+        });
+        setActiveSection(targetId);
+      }
+
+      // Small delay seamlessly switch
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setIsMenuOpen(false); // Close mobile menu if open
+      }, 500);
+    }, 600); // Match animation duration
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,16 +71,54 @@ const Header: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (isMenuOpen) {
+    if (isMenuOpen || isTransitioning) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
     return () => { document.body.style.overflow = ''; };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isTransitioning]);
 
   return (
     <>
+      {/* ─── Page Transition Overlay ─── */}
+      <AnimatePresence>
+        {isTransitioning && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex flex-col"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { delay: 0.4, duration: 0.5 } }}
+          >
+            {/* Multiple layers for "shutter" effect */}
+            <motion.div
+              className="w-full h-1/2 bg-[#050508] border-b border-cyan-500/30"
+              initial={{ y: "-100%" }}
+              animate={{ y: "0%" }}
+              exit={{ y: "-100%" }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            />
+            <motion.div
+              className="w-full h-1/2 bg-[#050508] border-t border-purple-500/30"
+              initial={{ y: "100%" }}
+              animate={{ y: "0%" }}
+              exit={{ y: "100%" }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            />
+
+            {/* Center loading/logo or flash */}
+            <motion.div
+              className="absolute inset-0 flex items-center justify-center pointer-events-none"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ delay: 0.2, duration: 0.2 }}
+            >
+              <div className="w-20 h-2 bg-cyan-400 blur-[20px] rounded-full animate-pulse" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -68,6 +139,7 @@ const Header: React.FC = () => {
                   <motion.a
                     key={item.name}
                     href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href)}
                     className="relative group"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -161,7 +233,7 @@ const Header: React.FC = () => {
                         ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/15'
                         : 'text-gray-500 hover:text-white hover:bg-white/[0.04]'
                         }`}
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={(e) => handleNavClick(e, item.href)}
                     >
                       {isActive && (
                         <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full shadow-[0_0_6px_#00ffff] flex-shrink-0"></span>

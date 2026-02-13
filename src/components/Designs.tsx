@@ -71,7 +71,7 @@ const Designs: React.FC = () => {
     : designs.filter(design => design.category === selectedCategory);
 
   return (
-    <section id="designs" className="py-20 bg-gray-900/50">
+    <section id="designs" className="py-20 bg-gray-900/50 snap-start snap-always min-h-screen flex items-center">
       <div className="container mx-auto px-4">
         <motion.div
           variants={fadeInUp}
@@ -101,8 +101,8 @@ const Designs: React.FC = () => {
               variants={fadeInUp}
               onClick={() => setSelectedCategory(category)}
               className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${selectedCategory === category
-                  ? 'bg-cyan-500 text-black'
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                ? 'bg-cyan-500 text-black'
+                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                 }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

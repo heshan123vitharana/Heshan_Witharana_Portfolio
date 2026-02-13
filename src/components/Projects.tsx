@@ -31,6 +31,7 @@ const Projects: React.FC = () => {
       technologies: ['React', 'Node.js', 'Express.js', 'MySQL'],
       image: 'https://images.pexels.com/photos/2589457/pexels-photo-2589457.jpeg?auto=compress&cs=tinysrgb&w=800',
       githubUrl: 'https://github.com/heshan123vitharana',
+      liveUrl: 'https://final-project-9i0qbcvto-heshans-projects-6067e0fa.vercel.app/',
       award: '🏆 3rd Place — ICIET 2025',
       icon: Award,
     },
@@ -65,7 +66,7 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-b from-gray-900 to-black">
+    <section id="projects" className="py-20 bg-gradient-to-b from-gray-900 to-black snap-start snap-always min-h-screen flex items-center">
       <div className="container mx-auto px-4">
         <motion.div
           variants={fadeInUp}
@@ -89,7 +90,7 @@ const Projects: React.FC = () => {
           viewport={{ once: true, amount: 0.1 }}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <motion.div
               key={project.title}
               variants={fadeInUp}

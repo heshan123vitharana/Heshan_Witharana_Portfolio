@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-black border-t border-gray-800">
+    <footer className="bg-black border-t border-gray-800 snap-start snap-always">
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <motion.div

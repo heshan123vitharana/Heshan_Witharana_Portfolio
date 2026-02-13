@@ -217,7 +217,7 @@ const Skills: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gray-900">
+    <section id="skills" className="py-20 bg-gray-900 snap-start snap-always min-h-screen flex items-center">
       <div className="container mx-auto px-4">
         <motion.div
           variants={fadeInUp}
