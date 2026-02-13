@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
 const TechBackground: React.FC = () => {
@@ -11,15 +11,11 @@ const TechBackground: React.FC = () => {
     const rotateReverse = useTransform(scrollY, [0, 500], [0, -60]);
 
     // Interactive 3D State
-    const [isDragging, setIsDragging] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
     // Use spring values for smooth rotation
     const mouseRotateX = useSpring(0, { stiffness: 100, damping: 30 });
     const mouseRotateY = useSpring(0, { stiffness: 100, damping: 30 });
-
-    const handleMouseDown = () => setIsDragging(true);
-    const handleMouseUp = () => setIsDragging(false);
 
     // Add global event listeners for smoother drag handling outside component
     useEffect(() => {
@@ -46,9 +42,7 @@ const TechBackground: React.FC = () => {
     return (
         <div
             ref={containerRef}
-            className="absolute inset-0 overflow-hidden z-0"
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
+            className="absolute inset-0 overflow-hidden z-0 pointer-events-auto"
             style={{ perspective: '1200px' }} // Global perspective for the scene
         >
             <motion.div

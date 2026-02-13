@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Github, Linkedin, Mail, ArrowRight, Download } from 'lucide-react';
 import TechBackground from './TechBackground';
+import ThreeDGlassProfile from './ThreeDGlassProfile';
 
 const FULL_NAME = 'HESHAN WITHARANA';
 const TYPING_SPEED = 100;
@@ -94,7 +95,7 @@ const Hero: React.FC = () => {
 
           {/* ── Name ── */}
           <motion.h1
-            className="font-orbitron font-bold text-center relative z-[1] whitespace-nowrap min-h-[1.2em] ml-16 md:ml-32"
+            className="font-orbitron font-bold text-center relative z-[20] whitespace-nowrap min-h-[1.2em] ml-16 md:ml-32"
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -233,25 +234,9 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, scale: 0.6, x: 50 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-[2] mt-10 lg:-mt-16 flex-shrink-0 lg:w-[560px] pointer-events-auto"
+          className="relative z-[2] mt-10 lg:-mt-16 flex-shrink-0 lg:w-[560px] pointer-events-auto flex items-center justify-center"
         >
-          {/* Pulsing glow behind */}
-          <motion.div
-            className="absolute inset-0"
-            style={{
-              margin: '-40px',
-              background: 'radial-gradient(circle, rgba(6,182,212,0.1) 0%, rgba(139,92,246,0.05) 40%, transparent 70%)',
-            }}
-            animate={{ scale: [1, 1.08, 1], opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-          />
-
-          {/* Photo */}
-          <img
-            src="/Heshan_png.png"
-            alt="Heshan Witharana"
-            className="relative w-[380px] h-[380px] md:w-[480px] md:h-[480px] lg:w-[560px] lg:h-[560px] object-contain drop-shadow-[0_0_60px_rgba(6,182,212,0.12)]"
-          />
+          <ThreeDGlassProfile src="/Heshan_png.png" alt="Heshan Witharana" />
 
         </motion.div>
       </div>
