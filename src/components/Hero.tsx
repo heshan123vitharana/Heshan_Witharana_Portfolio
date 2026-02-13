@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Github, Linkedin, Mail, ArrowRight, Download } from 'lucide-react';
+import TechBackground from './TechBackground';
 
 const FULL_NAME = 'HESHAN WITHARANA';
 const TYPING_SPEED = 100;
@@ -53,8 +54,11 @@ const Hero: React.FC = () => {
       {/* ═══ Background ═══ */}
       <div className="absolute inset-0 bg-[#050508]" />
 
+      {/* 3D Tech Background Component */}
+      <TechBackground />
+
       {/* Ambient lights */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 pointer-events-none">
         <motion.div
           className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-cyan-500/[0.04] rounded-full blur-[150px]"
           animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
@@ -65,7 +69,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Subtle grid */}
-      <div className="absolute inset-0 cyber-grid opacity-[0.03]" />
+      <div className="absolute inset-0 cyber-grid opacity-[0.03] pointer-events-none" />
 
       {/* Floating particles */}
       {[
@@ -83,10 +87,10 @@ const Hero: React.FC = () => {
 
 
       {/* ═══ Main Content — Two-Column Layout ═══ */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-20 pb-20 lg:pb-0 flex flex-col lg:flex-row lg:items-center lg:justify-between items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-20 pb-20 lg:pb-0 flex flex-col lg:flex-row lg:items-center lg:justify-between items-center pointer-events-none">
 
         {/* ── Left Column: Text Content ── */}
-        <div className="flex flex-col items-center lg:items-center lg:flex-1 lg:min-w-0 lg:px-8">
+        <div className="flex flex-col items-center lg:items-center lg:flex-1 lg:min-w-0 lg:px-8 pointer-events-auto">
 
           {/* ── Name ── */}
           <motion.h1
@@ -229,7 +233,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, scale: 0.6, x: 50 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-[2] mt-10 lg:-mt-16 flex-shrink-0 lg:w-[560px]"
+          className="relative z-[2] mt-10 lg:-mt-16 flex-shrink-0 lg:w-[560px] pointer-events-auto"
         >
           {/* Pulsing glow behind */}
           <motion.div
@@ -253,7 +257,7 @@ const Hero: React.FC = () => {
       </div>
 
       <motion.div
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 lg:hidden"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 lg:hidden pointer-events-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.8 }}
