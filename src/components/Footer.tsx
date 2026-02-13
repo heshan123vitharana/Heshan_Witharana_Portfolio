@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Cpu, Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import { Cpu, Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -80,16 +80,14 @@ const Footer: React.FC = () => {
           </motion.div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-center items-center gap-6">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-gray-300 text-sm mb-4 md:mb-0 flex items-center"
+            className="text-gray-300 text-sm flex items-center"
           >
-            Made with <Heart className="text-red-500 w-4 h-4 mx-1" /> by Heshan Witharana
-            <span className="mx-2">•</span>
             © 2025 All rights reserved
           </motion.p>
 
