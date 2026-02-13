@@ -83,7 +83,8 @@ const Hero: React.FC = () => {
 
 
       {/* ═══ Main Content — Centered Column ═══ */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 pt-20 pb-20 flex flex-col items-center">
+      {/* ═══ Main Content — Centered Column ═══ */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-20 pb-20 flex flex-col items-center">
 
         {/* ── Greeting (above photo) ── */}
         <motion.div
@@ -124,6 +125,33 @@ const Hero: React.FC = () => {
           transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="relative z-[2] -mt-20 md:-mt-24 lg:-mt-32 mb-6"
         >
+          {/* ── Desktop Roles (Left of Image) ── */}
+          <div className="absolute right-full top-1/2 -translate-y-1/2 mr-12 hidden lg:flex flex-col items-end gap-6 w-80 z-20">
+            {['Full-Stack Engineer', 'Project Manager', 'Graphic Designer'].map((role, i) => (
+              <motion.div
+                key={role}
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  delay: 0.8 + i * 0.1,
+                  type: 'spring',
+                  stiffness: 300,
+                  damping: 20
+                }}
+                className="group relative flex items-center justify-end"
+              >
+                {/* Pill */}
+                <span className="relative z-10 px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-cyan-300/90 bg-black/60 border border-cyan-500/30 rounded-full backdrop-blur-md shadow-[0_0_15px_rgba(6,182,212,0.1)] group-hover:bg-cyan-900/20 group-hover:border-cyan-400/60 group-hover:text-cyan-200 group-hover:shadow-[0_0_25px_rgba(6,182,212,0.2)] transition-all duration-300 cursor-default whitespace-nowrap">
+                  {role}
+                </span>
+
+                {/* Connector Line & Dot */}
+                <div className="absolute right-[-40px] top-1/2 -translate-y-1/2 w-[30px] h-[1px] bg-gradient-to-r from-cyan-500/50 to-transparent group-hover:w-[50px] group-hover:from-cyan-400 transition-all duration-300" />
+                <div className="absolute right-[-6px] top-1/2 -translate-y-1/2 w-1 h-1 bg-cyan-500 rounded-full opacity-0 group-hover:opacity-100 group-hover:shadow-[0_0_8px_rgba(6,182,212,0.8)] transition-all duration-300 delay-75" />
+              </motion.div>
+            ))}
+          </div>
+
           {/* Pulsing glow behind */}
           <motion.div
             className="absolute inset-0"
@@ -144,8 +172,8 @@ const Hero: React.FC = () => {
 
           {/* Floating badge — 3+ Years */}
           <motion.div
-            className="absolute -bottom-3 -left-10 md:-left-14 bg-[#0b0b12]/95 backdrop-blur-xl border border-cyan-400/[0.1] rounded-xl px-3.5 py-2 shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
-            initial={{ opacity: 0, x: -20 }}
+            className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-12 bg-[#0b0b12]/95 backdrop-blur-xl border border-cyan-400/[0.1] rounded-xl px-3.5 py-2 shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
+            initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1, duration: 0.6 }}
           >
@@ -163,7 +191,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.65 }}
-          className="flex flex-wrap justify-center gap-2 mb-7"
+          className="flex flex-wrap justify-center gap-2 mb-7 lg:hidden"
         >
           {['Full-Stack Engineer', 'Project Manager', 'Graphic Designer'].map((role, i) => (
             <motion.span
