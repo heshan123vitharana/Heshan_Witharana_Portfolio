@@ -80,6 +80,8 @@ const Hero: React.FC = () => {
         <div key={i} className="hero-particle" style={p} />
       ))}
 
+
+
       {/* ═══ Main Content — Centered Column ═══ */}
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 pt-20 pb-20 flex flex-col items-center">
 
@@ -108,7 +110,7 @@ const Hero: React.FC = () => {
             {firstName}
           </span>
           {lastName && (
-            <span className="text-4xl md:text-6xl lg:text-7xl text-white inline-block ml-3 md:ml-5 hero-name-glow-white">
+            <span className="text-4xl md:text-6xl lg:text-7xl text-white inline-block ml-6 md:ml-10 hero-name-glow-white">
               {lastName}
             </span>
           )}
@@ -120,7 +122,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, scale: 0.6, y: 50 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-[2] -mt-10 md:-mt-14 lg:-mt-20 mb-6"
+          className="relative z-[2] -mt-20 md:-mt-24 lg:-mt-32 mb-6"
         >
           {/* Pulsing glow behind */}
           <motion.div
@@ -193,7 +195,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.0 }}
-          className="flex flex-wrap justify-center gap-3 mb-10"
+          className="flex flex-wrap justify-center gap-3 mb-10 lg:hidden"
         >
           <motion.a
             href="#contact"

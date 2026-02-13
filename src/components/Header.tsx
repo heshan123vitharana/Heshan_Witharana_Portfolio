@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Download, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header: React.FC = () => {
@@ -14,7 +14,6 @@ const Header: React.FC = () => {
     { name: 'Designs', href: '#designs' },
     { name: 'Skills', href: '#skills' },
     { name: 'Achievements', href: '#achievements' },
-    { name: 'Contact', href: '#contact' },
   ];
 
   useEffect(() => {
@@ -62,6 +61,24 @@ const Header: React.FC = () => {
           <div className="flex items-center justify-center h-[64px] relative">
 
             {/* Desktop Navigation — Centered */}
+            {/* Resume Button (Left) */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5 }}
+              className="hidden lg:flex absolute left-0 items-center"
+            >
+              <a
+                href="/Heshan_Witharana_PM & Full Stack Developer_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 border border-white/[0.1] text-gray-300 font-semibold text-[10px] uppercase tracking-[0.15em] rounded-lg hover:border-cyan-400/25 hover:text-white hover:bg-white/[0.03] transition-all duration-300"
+              >
+                <Download size={12} />
+                Resume
+              </a>
+            </motion.div>
+
             <nav className="hidden lg:flex items-center gap-1">
               {menuItems.map((item, index) => {
                 const isActive = activeSection === item.href.replace('#', '');
@@ -101,6 +118,30 @@ const Header: React.FC = () => {
                 );
               })}
             </nav>
+
+            {/* Hire Me Button (Right) */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5 }}
+              className="hidden lg:flex absolute right-0 items-center"
+            >
+              <a
+                href="#contact"
+                className="group relative inline-flex items-center gap-2 px-4 py-2 overflow-hidden bg-gradient-to-r from-cyan-400 to-cyan-500 text-black font-bold text-[10px] uppercase tracking-[0.15em] rounded-lg shadow-lg shadow-cyan-500/20"
+              >
+                <div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100 transition-opacity duration-500" // animation handled by css group-hover usually, or motion div inside? 
+                // Previous hero button had motion.div for shine. I'll stick to CSS or simple motion.
+                // I'll reuse the internal structure if possible or simplify.
+                // Simplify for Header to avoid complex motion nesting issues or just use simple CSS hover.
+                />
+                {/* Shine sweep using CSS transform on hover */}
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
+                <span className="relative">Hire Me</span>
+                <ArrowRight size={12} className="relative group-hover:translate-x-1 transition-transform duration-200" />
+              </a>
+            </motion.div>
 
             {/* Mobile hamburger */}
             <motion.button
