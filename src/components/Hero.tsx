@@ -1,8 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Github, Linkedin, Mail, ArrowRight, Download } from 'lucide-react';
 
+const FULL_NAME = 'HESHAN WITHARANA';
+const TYPING_SPEED = 100;
+const DELETING_SPEED = 60;
+const PAUSE_AFTER_TYPING = 2500;
+const PAUSE_AFTER_DELETING = 800;
+
 const Hero: React.FC = () => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    let delay: number;
+    let nextText = displayedText;
+    let nextDeleting = isDeleting;
+
+    if (!isDeleting) {
+      if (displayedText.length < FULL_NAME.length) {
+        nextText = FULL_NAME.slice(0, displayedText.length + 1);
+        delay = TYPING_SPEED;
+      } else {
+        nextDeleting = true;
+        delay = PAUSE_AFTER_TYPING;
+      }
+    } else {
+      if (displayedText.length > 0) {
+        nextText = FULL_NAME.slice(0, displayedText.length - 1);
+        delay = DELETING_SPEED;
+      } else {
+        nextDeleting = false;
+        delay = PAUSE_AFTER_DELETING;
+      }
+    }
+
+    const timer = setTimeout(() => {
+      setDisplayedText(nextText);
+      setIsDeleting(nextDeleting);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting]);
+
+  // Split the displayed text into first and last name portions
+  const spaceIndex = FULL_NAME.indexOf(' ');
+  const firstName = displayedText.slice(0, Math.min(displayedText.length, spaceIndex));
+  const lastName = displayedText.length > spaceIndex ? displayedText.slice(spaceIndex) : '';
+
   return (
     <section id="home" className="min-h-screen relative overflow-hidden flex items-center justify-center">
       {/* ═══ Background ═══ */}
@@ -54,17 +99,20 @@ const Hero: React.FC = () => {
 
         {/* ── Name (behind photo for 3D effect) ── */}
         <motion.h1
-          className="font-orbitron font-bold text-center relative z-[1] whitespace-nowrap"
+          className="font-orbitron font-bold text-center relative z-[1] whitespace-nowrap min-h-[1.2em]"
           initial={{ opacity: 0, y: 30, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="text-4xl md:text-6xl lg:text-7xl gradient-text inline-block hero-name-glow">
-            HESHAN
+            {firstName}
           </span>
-          <span className="text-4xl md:text-6xl lg:text-7xl text-white inline-block ml-3 md:ml-5 hero-name-glow-white">
-            WITHARANA
-          </span>
+          {lastName && (
+            <span className="text-4xl md:text-6xl lg:text-7xl text-white inline-block ml-3 md:ml-5 hero-name-glow-white">
+              {lastName}
+            </span>
+          )}
+          <span className="typewriter-cursor text-4xl md:text-6xl lg:text-7xl" />
         </motion.h1>
 
         {/* ── Photo (overlaps text for 3D depth) ── */}
@@ -105,18 +153,7 @@ const Hero: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* Floating badge — PM Lead */}
-          <motion.div
-            className="absolute -top-2 -right-12 md:-right-16 bg-[#0b0b12]/95 backdrop-blur-xl border border-purple-400/[0.1] rounded-xl px-3.5 py-2 shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-          >
-            <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}>
-              <div className="text-[9px] text-purple-400 font-bold uppercase tracking-wider">PM Lead</div>
-              <div className="text-[8px] text-gray-600 font-medium">Rapidventure</div>
-            </motion.div>
-          </motion.div>
+
         </motion.div>
 
         {/* ── Role pills ── */}

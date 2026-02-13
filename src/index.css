@@ -296,6 +296,30 @@ body {
   }
 }
 
+/* Typewriter cursor */
+.typewriter-cursor::after {
+  content: '|';
+  display: inline-block;
+  margin-left: 2px;
+  background: linear-gradient(180deg, #06b6d4, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: cursor-blink 0.7s step-end infinite;
+}
+
+@keyframes cursor-blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
 /* ===== Premium Glass Navigation ===== */
 
 .glass-nav {
