@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Palette, Users, Briefcase, TrendingUp, Lightbulb } from 'lucide-react';
+import { fadeInUp, staggerContainer, scaleIn } from '../utils/animations';
 
 const About: React.FC = () => {
   const features = [
@@ -36,35 +37,14 @@ const About: React.FC = () => {
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
-
   return (
     <section id="about" className="py-20 bg-gradient-to-b from-gray-900/50 to-gray-900">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
@@ -76,16 +56,16 @@ const About: React.FC = () => {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <motion.div
               key={feature.title}
-              variants={itemVariants}
+              variants={scaleIn}
               className="bg-black/40 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all duration-300 holographic"
               whileHover={{ scale: 1.05 }}
             >
@@ -103,10 +83,10 @@ const About: React.FC = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="mt-16 bg-black/40 p-8 rounded-lg border border-gray-700 scanner-line"
         >
           <div className="grid md:grid-cols-2 gap-8 items-center">

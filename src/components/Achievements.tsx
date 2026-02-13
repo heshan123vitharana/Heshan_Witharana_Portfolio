@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Trophy, BookOpen, Award, ShieldCheck } from 'lucide-react';
+import { fadeInUp, staggerContainer } from '../utils/animations';
 
 interface Achievement {
     icon: React.ElementType;
@@ -51,10 +52,10 @@ const Achievements: React.FC = () => {
         <section id="achievements" className="py-20 bg-gradient-to-b from-black to-gray-900/50">
             <div className="container mx-auto px-4">
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
+                    variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
                     className="text-center mb-16"
                 >
                     <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
@@ -65,14 +66,17 @@ const Achievements: React.FC = () => {
                     </p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-8">
-                    {achievements.map((item, index) => (
+                <motion.div
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.1 }}
+                    className="grid md:grid-cols-2 gap-8"
+                >
+                    {achievements.map((item) => (
                         <motion.div
                             key={item.title}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: index * 0.15 }}
-                            viewport={{ once: true }}
+                            variants={fadeInUp}
                             className={`bg-gradient-to-br ${item.color} p-8 rounded-lg border ${item.glow} transition-all duration-300 hover:shadow-lg`}
                             whileHover={{ scale: 1.02 }}
                         >
@@ -94,7 +98,7 @@ const Achievements: React.FC = () => {
                             </div>
                         </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

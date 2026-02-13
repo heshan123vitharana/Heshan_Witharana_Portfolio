@@ -14,6 +14,7 @@ import {
   Filler,
 } from 'chart.js';
 import { Bar, Radar } from 'react-chartjs-2';
+import { fadeInUp, staggerContainer, scaleIn, slideInLeft, slideInRight } from '../utils/animations';
 
 ChartJS.register(
   CategoryScale,
@@ -219,10 +220,10 @@ const Skills: React.FC = () => {
     <section id="skills" className="py-20 bg-gray-900">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
@@ -235,19 +236,16 @@ const Skills: React.FC = () => {
 
         {/* Stack Domain Cards */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="grid md:grid-cols-2 gap-6 mb-16"
         >
-          {stackDomains.map((item, index) => (
+          {stackDomains.map((item) => (
             <motion.div
               key={item.domain}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              variants={fadeInUp}
               className={`bg-gradient-to-br ${item.color} p-6 rounded-lg border ${item.borderColor} transition-all duration-300`}
               whileHover={{ scale: 1.02 }}
             >
@@ -262,14 +260,17 @@ const Skills: React.FC = () => {
         </motion.div>
 
         {/* Skill Progress Bars */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid md:grid-cols-2 gap-8 mb-16"
+        >
           {categories.map((category) => (
             <motion.div
               key={category}
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              variants={fadeInUp}
               className="bg-black/40 p-6 rounded-lg border border-gray-700"
             >
               <h3 className="text-2xl font-orbitron font-bold text-white mb-6">
@@ -298,13 +299,13 @@ const Skills: React.FC = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
@@ -317,10 +318,10 @@ const Skills: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            variants={slideInLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
             className="bg-gray-900/80 p-6 rounded-lg border border-gray-700 scanner-line"
           >
             <h3 className="text-2xl font-orbitron font-bold text-white mb-6 text-center">
@@ -332,10 +333,10 @@ const Skills: React.FC = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            variants={slideInRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
             className="bg-gray-900/80 p-6 rounded-lg border border-gray-700 scanner-line"
           >
             <h3 className="text-2xl font-orbitron font-bold text-white mb-6 text-center">
@@ -348,50 +349,50 @@ const Skills: React.FC = () => {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          variants={scaleIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
           className="bg-gray-900/80 p-8 rounded-lg border border-gray-700 holographic"
         >
           <h3 className="text-2xl font-orbitron font-bold text-white mb-8 text-center">
             Tools & Technologies
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {tools.map((tool, index) => (
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4"
+          >
+            {tools.map((tool) => (
               <motion.div
                 key={tool}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                variants={fadeInUp}
                 className="bg-black/40 p-4 rounded-lg border border-cyan-500/30 text-center hover:border-cyan-500 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
               >
                 <span className="text-cyan-400 font-medium">{tool}</span>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="mt-12 grid md:grid-cols-3 gap-8"
         >
           {[
             { number: '20+', label: 'Projects Completed', color: 'text-cyan-400' },
             { number: '100%', label: 'Client Satisfaction', color: 'text-green-400' },
             { number: '3+', label: 'Years Experience', color: 'text-purple-400' },
-          ].map((stat, index) => (
+          ].map((stat) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              viewport={{ once: true }}
+              variants={fadeInUp}
               className="text-center"
             >
               <div className={`text-4xl font-orbitron font-bold ${stat.color} mb-2`}>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Maximize2 } from 'lucide-react';
+import { fadeInUp, staggerContainer } from '../utils/animations';
 
 const Designs: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -65,18 +66,18 @@ const Designs: React.FC = () => {
   const categories = ['All', ...Array.from(new Set(designs.map(design => design.category)))];
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const filteredDesigns = selectedCategory === 'All' 
-    ? designs 
+  const filteredDesigns = selectedCategory === 'All'
+    ? designs
     : designs.filter(design => design.category === selectedCategory);
 
   return (
     <section id="designs" className="py-20 bg-gray-900/50">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
@@ -88,21 +89,21 @@ const Designs: React.FC = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="flex flex-wrap justify-center gap-4 mb-12"
         >
           {categories.map((category) => (
             <motion.button
               key={category}
+              variants={fadeInUp}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-                selectedCategory === category
+              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${selectedCategory === category
                   ? 'bg-cyan-500 text-black'
                   : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-              }`}
+                }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -146,7 +147,7 @@ const Designs: React.FC = () => {
                     </span>
                   </div>
                 </div>
-                
+
                 <div className="p-6">
                   <h3 className="text-xl font-orbitron font-bold text-white mb-2">
                     {design.title}

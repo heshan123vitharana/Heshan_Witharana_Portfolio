@@ -86,11 +86,11 @@ const Hero: React.FC = () => {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-20 pb-20 lg:pb-0 flex flex-col lg:flex-row lg:items-center lg:justify-between items-center">
 
         {/* ── Left Column: Text Content ── */}
-        <div className="flex flex-col items-center lg:items-start lg:flex-1 lg:min-w-0 lg:pr-8">
+        <div className="flex flex-col items-center lg:items-center lg:flex-1 lg:min-w-0 lg:px-8">
 
           {/* ── Name ── */}
           <motion.h1
-            className="font-orbitron font-bold text-center lg:text-left relative z-[1] whitespace-nowrap min-h-[1.2em]"
+            className="font-orbitron font-bold text-center relative z-[1] whitespace-nowrap min-h-[1.2em] ml-16 md:ml-32"
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -111,7 +111,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.65 }}
-            className="flex flex-wrap justify-center lg:justify-start gap-2 mt-8 mb-5"
+            className="flex flex-wrap justify-center gap-2 mt-8 mb-5"
           >
             {['Project Manager', 'Full-Stack Engineer', 'Graphic Designer'].map((role, i) => (
               <motion.span
@@ -131,7 +131,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.85 }}
-            className="text-gray-400 text-sm md:text-base leading-relaxed max-w-lg text-center lg:text-left mb-6"
+            className="text-gray-400 text-sm md:text-base leading-relaxed max-w-lg text-center mb-6"
           >
             Turning ideas into digital reality.<br />
             Building modern web apps with style and substance.<br />
@@ -143,14 +143,14 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.95 }}
-            className="flex gap-6 md:gap-8 mb-8"
+            className="flex gap-6 md:gap-8 mb-8 justify-center"
           >
             {[
               { value: '3+', label: 'Years Experience' },
               { value: '20+', label: 'Projects Completed' },
               { value: '10+', label: 'Technologies' },
             ].map((stat) => (
-              <div key={stat.label} className="text-center lg:text-left">
+              <div key={stat.label} className="text-center">
                 <div className="text-xl md:text-2xl font-orbitron font-bold text-white">{stat.value}</div>
                 <div className="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider">{stat.label}</div>
               </div>
@@ -162,7 +162,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.0 }}
-            className="flex flex-wrap justify-center lg:justify-start gap-3 mb-4"
+            className="flex flex-wrap justify-center gap-3 mb-4"
           >
             <motion.a
               href="/Heshan_Witharana_PM & Full Stack Developer_Resume.pdf"
