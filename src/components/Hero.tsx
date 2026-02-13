@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
   const lastName = displayedText.length > spaceIndex ? displayedText.slice(spaceIndex) : '';
 
   return (
-    <section id="home" className="min-h-screen relative overflow-hidden flex items-center justify-center">
+    <section id="home" className="min-h-screen relative overflow-hidden flex items-center justify-center lg:items-end">
       {/* ═══ Background ═══ */}
       <div className="absolute inset-0 bg-[#050508]" />
 
@@ -84,7 +84,7 @@ const Hero: React.FC = () => {
 
       {/* ═══ Main Content — Centered Column ═══ */}
       {/* ═══ Main Content — Centered Column ═══ */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-20 pb-20 flex flex-col items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-20 pb-20 lg:pb-0 flex flex-col items-center">
 
         {/* ── Greeting (above photo) ── */}
         <motion.div
@@ -123,7 +123,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, scale: 0.6, y: 50 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-[2] -mt-20 md:-mt-24 lg:-mt-32 mb-6"
+          className="relative z-[2] -mt-20 md:-mt-24 lg:-mt-32 mb-6 lg:mb-0"
         >
           {/* ── Desktop Roles (Left of Image) ── */}
           <div className="absolute right-full top-1/2 -translate-y-1/2 mr-12 hidden lg:flex flex-col items-end gap-6 w-80 z-20">
@@ -206,17 +206,7 @@ const Hero: React.FC = () => {
           ))}
         </motion.div>
 
-        {/* ── Description ── */}
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.85 }}
-          className="text-gray-400 text-sm md:text-[15px] leading-relaxed text-center max-w-lg mb-9"
-        >
-          Bridging the gap between robust code and stunning visual identities.
-          Currently leading technical lifecycles at{' '}
-          <span className="text-cyan-400 font-semibold">Rapidventure Business Solutions</span>.
-        </motion.p>
+        {/* ── Description Removed ── */}
 
         {/* ── CTA Buttons ── */}
         <motion.div
@@ -259,9 +249,9 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
-          className="flex items-center gap-3"
+          className="flex items-center gap-3 lg:absolute lg:bottom-12 lg:right-12 lg:mb-0"
         >
-          <div className="w-10 h-px bg-gradient-to-r from-transparent to-gray-700" />
+          <div className="w-10 h-px bg-gradient-to-r from-transparent to-gray-700 lg:hidden" />
           {[
             { icon: Github, href: 'https://github.com/heshan123vitharana', label: 'GitHub' },
             { icon: Linkedin, href: 'https://linkedin.com/in/heshan-witharana', label: 'LinkedIn' },
@@ -281,13 +271,12 @@ const Hero: React.FC = () => {
               <s.icon size={16} />
             </motion.a>
           ))}
-          <div className="w-10 h-px bg-gradient-to-l from-transparent to-gray-700" />
+          <div className="w-10 h-px bg-gradient-to-l from-transparent to-gray-700 lg:hidden" />
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 lg:hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.8 }}
