@@ -62,6 +62,21 @@ const Projects: React.FC = () => {
       image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
       githubUrl: 'https://github.com/heshan123vitharana',
       icon: Palette,
+    },
+    {
+      title: 'Reflex Design & Engineering',
+      role: 'Frontend Developer',
+      techStack: 'React • Tailwind CSS',
+      description: 'A modern design and engineering landing page focusing on high-performance web experiences and sleek user interfaces.',
+      highlights: [
+        'Developed a responsive and visually engaging modern web application.',
+        'Implemented modern UI/UX principles with a focus on performance.'
+      ],
+      technologies: ['React', 'Tailwind CSS', 'Vite'],
+      image: 'https://images.pexels.com/photos/1933900/pexels-photo-1933900.jpeg?auto=compress&cs=tinysrgb&w=800',
+      githubUrl: 'https://github.com/heshan123vitharana',
+      liveUrl: 'https://reflex-rho-roan.vercel.app/',
+      icon: Briefcase,
     }
   ];
 
